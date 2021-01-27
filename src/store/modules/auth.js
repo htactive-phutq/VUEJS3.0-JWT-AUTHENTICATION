@@ -29,7 +29,7 @@ const getters = {
 const actions = {
   async login({ commit }, payload) {
     const response = await axios
-      .post("http://localhost:3000/auth/login", payload)
+      .post("https://api.thongtinketoan.com/api/login", payload)
       .catch((err) => {
         console.log(err);
       });
@@ -48,6 +48,7 @@ const mutations = {
     localStorage.setItem("refresh_token", data.refresh_token);
 
     const jwtDecodedValue = jwtDecrypt(data.access_token);
+    console.log(jwtDecodedValue, '???jwtDecodedValue');
     const newTokenData = {
       token: data.access_token,
       refreshToken: data.refresh_token,

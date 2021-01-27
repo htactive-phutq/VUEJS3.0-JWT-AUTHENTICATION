@@ -12,7 +12,7 @@ const getters = {
 
 const actions = {
     async getAllTodos({commit}){
-        var response = await jwtInterceptor.get('http://localhost:3000/todos');
+        var response = await jwtInterceptor.get('https://api.thongtinketoan.com/api/alluser');
         if(response && response.data){
             commit('setTodos', response.data);
         }

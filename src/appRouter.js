@@ -16,7 +16,7 @@ export const routeConfig = createRouter({
 });
 
 routeConfig.beforeEach((to,from, next) => {
-    console.log(store.getters["auth/getAuthData"].token);
+    // console.log(store.getters["auth/getAuthData"].token);
     if(!store.getters["auth/getAuthData"].token){
         const access_token = localStorage.getItem("access_token");
         const refresh_token = localStorage.getItem("refresh_token");

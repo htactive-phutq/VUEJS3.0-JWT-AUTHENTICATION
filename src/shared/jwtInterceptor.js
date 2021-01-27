@@ -9,7 +9,7 @@ jwtInterceptor.interceptors.request.use(config => {
     const authData = store.getters['auth/getAuthData'];
     const isAuthenticated = store.getters['auth/isTokenActive'];
     if(isAuthenticated){
-        config.headers.common["Authorization"] = `bearer ${authData.token}` ;
+        config.headers.common["Authorization"] = `Bearer ${authData.token}` ;
         return config;
     }
     else{
@@ -17,7 +17,7 @@ jwtInterceptor.interceptors.request.use(config => {
             access_token: authData.token,
             refresh_token:authData.refresh_token
         };
-        axios.post('http://localhost:3000/auth/refreshtoken',payload)
+        axios.post('https://api.thongtinketoan.com/api/refreshtoken',payload)
         .then(response => {
             console.log(response);
             store.commit('auth/saveTokenData',response.data);
